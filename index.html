@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Station Records — SEC-142</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-content">
+    <div class="loading-stamp">NMRC</div>
+    <h1>Opening the<br>Register</h1>
+    <div class="loading-rule"><div class="loading-fill"></div></div>
+  </div>
+</div>
+
+<div class="ledger-app" id="app" style="display:none;">
+
+  <header class="ledger-header">
+    <div class="header-left">
+      <div class="header-mark">Station Records</div>
+      <div class="header-sub" id="headerSub">SEC-142 · Documents &amp; Records</div>
+    </div>
+    <div class="header-right">
+      <span class="header-count" id="footCounter">01 / 01</span>
+    </div>
+  </header>
+
+  <main class="sheet-stage">
+    <button class="turn-btn turn-prev" id="prevBtn" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <div class="viewport" id="viewport"></div>
+
+    <button class="turn-btn turn-next" id="nextBtn" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </main>
+
+  <footer class="tab-strip-wrap">
+    <div class="tab-strip" id="tabStrip"></div>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

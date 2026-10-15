@@ -1,8 +1,12 @@
-Register app image assignments are explicit in each item's imageTag in
-app.js, so inserting a slide will not change existing image filenames.
+Register app image assignments are explicit in each item's imageTag or
+imageTags in app.js, so inserting a slide will not change existing image
+filenames. Use imageTag: '2a' for one image, or imageTags: ['2a', '2b']
+for multiple images; each tag maps to a .jpg file in this folder.
+
 Bio Data Register uses 2a.jpg; Station Diary uses 11a.jpg. For a new
-entry with an image, set a unique imageTag (without the extension) on
-that item and add the matching .jpg file in this folder.
+entry, assign unique tags and add the matching image files here. For
+example, imageTags: ['register-front', 'register-detail'] expects
+register-front.jpg and register-detail.jpg.
 
 Original source-deck image notes (the current app mapping may differ):
 2a  Station Diary            11a Possession Register

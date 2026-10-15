@@ -153,7 +153,7 @@ class StationRegistry {
           desc: item.desc,
           isIndex: !!item.isIndex,
           list: item.isIndex ? registerEntries : null,
-          imageTag: item.imageTag || null,
+          imageTags: item.imageTags || (item.imageTag ? [item.imageTag] : []),
           noImage: !!item.noImage
         });
       });
@@ -200,19 +200,20 @@ class StationRegistry {
   buildSheet(step) {
     const page = document.createElement('div');
     page.className = 'sheet' + (step.isIndex ? ' page-index' : '');
-    const imgSrc = `assets/images/${step.imageTag}.${IMAGE_EXT}`;
-
-    const photoBlock = (step.isIndex || step.noImage || !step.imageTag) ? '' : `
-        <div class="photo-slot">
-          <div class="washi-tape"></div>
-          <img src="${imgSrc}" alt="${step.title} reference image ${step.imageTag}"
-               onload="if(this.naturalHeight>this.naturalWidth){this.closest('.photo-slot').classList.add('is-portrait');}"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="photo-fallback" style="display:none;">
-            <span>IMAGE ${step.imageTag} NOT FOUND</span>
-            <span>place file at assets/images/${step.imageTag}.${IMAGE_EXT}</span>
-          </div>
-          <button class="photo-zoom-hint" type="button" aria-hidden="true"><i class="zoom-icon"></i>Click to zoom</button>
+    const photoBlock = (step.isIndex || step.noImage || !step.imageTags.length) ? '' : `
+        <div class="photo-gallery">
+          ${step.imageTags.map(imageTag => `
+            <div class="photo-slot">
+              <div class="washi-tape"></div>
+              <img src="assets/images/${imageTag}.${IMAGE_EXT}" alt="${step.title} reference image ${imageTag}"
+                   onload="if(this.naturalHeight>this.naturalWidth){this.closest('.photo-slot').classList.add('is-portrait');}"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="photo-fallback" style="display:none;">
+                <span>IMAGE ${imageTag} NOT FOUND</span>
+                <span>place file at assets/images/${imageTag}.${IMAGE_EXT}</span>
+              </div>
+              <button class="photo-zoom-hint" type="button" aria-hidden="true"><i class="zoom-icon"></i>Click to zoom</button>
+            </div>`).join('')}
         </div>`;
 
     const indexList = (step.isIndex && step.list && step.list.length) ? `

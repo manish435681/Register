@@ -167,8 +167,11 @@ body{
   .index-list{grid-template-columns:1fr;}
 }
 
+.photo-gallery{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:18px;
+}
 .photo-slot{
-  position:relative;width:100%;max-width:460px;margin:0 auto;
+  position:relative;flex:1 1 300px;width:100%;max-width:460px;margin:0;
   aspect-ratio:16/9;
   border:1px solid var(--rule);background:var(--paper-deep);
   overflow:hidden;

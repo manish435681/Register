@@ -7,6 +7,8 @@ Bio Data Register uses 2a.jpg; Station Diary uses 11a.jpg. For a new
 entry, assign unique tags and add the matching image files here. For
 example, imageTags: ['register-front', 'register-detail'] expects
 register-front.jpg and register-detail.jpg.
+Assurance Register uses 3a.jpg, 3b.jpg, and 3c.jpg; use the zoom
+navigation arrows or swipe to move between those images.
 
 Original source-deck image notes (the current app mapping may differ):
 2a  Station Diary            11a Possession Register

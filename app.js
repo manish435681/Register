@@ -49,7 +49,7 @@ class StationRegistry {
 
 
 
-        { title: 'Assurance Register', desc: 'Serves as a mandatory compliance log where staff sign to confirm they have read and understood the latest operational circulars and safety guidelines.', imageTag: '3a' },
+        { title: 'Assurance Register', desc: 'Serves as a mandatory compliance log where staff sign to confirm they have read and understood the latest operational circulars and safety guidelines.', imageTags: ['3a', '3b', '3c'] },
         { title: 'Attendance Register', desc: 'Tracks the daily physical presence, shift timings, and leave records of all station personnel to ensure proper manpower deployment.', noImage: true, imageTag: '4a' },
         { title: 'Petty Repair Register', desc: 'Used to log minor infrastructure and civil complaints (such as broken tiles or plumbing issues) and track their resolution status by the maintenance department.', imageTag: '5a' },
         { title: 'Equipment Failure Register', desc: 'Records operational faults in critical station systems like AFC gates, lifts, and escalators, monitoring reporting times and repair durations.', imageTag: '6a' },
@@ -355,6 +355,10 @@ class StationRegistry {
     this.nextBtn.addEventListener('click', () => this.next());
 
     document.addEventListener('keydown', (e) => {
+      if (this.lightbox?.classList.contains('open')) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); this.navigateLightbox(1); return; }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); this.navigateLightbox(-1); return; }
+      }
       switch (e.key) {
         case 'ArrowRight':
         case ' ':
@@ -376,18 +380,22 @@ class StationRegistry {
       <div class="lightbox-toolbar">
         <button type="button" data-act="out" aria-label="Zoom out">−</button>
         <span class="lightbox-pct" id="lightboxPct">100%</span>
+        <span class="lightbox-count" id="lightboxCount"></span>
         <button type="button" data-act="in" aria-label="Zoom in">+</button>
         <button type="button" data-act="reset" aria-label="Reset zoom">reset</button>
         <button type="button" data-act="close" aria-label="Close">close</button>
       </div>
       <div class="lightbox-stage" id="lightboxStage">
+        <button class="lightbox-nav lightbox-prev" type="button" data-image-nav="-1" aria-label="Previous image">‹</button>
         <img alt="" draggable="false">
+        <button class="lightbox-nav lightbox-next" type="button" data-image-nav="1" aria-label="Next image">›</button>
       </div>
     `;
     document.body.appendChild(this.lightbox);
     this.lightboxImg = this.lightbox.querySelector('img');
     this.lightboxStage = this.lightbox.querySelector('#lightboxStage');
     this.lightboxPct = this.lightbox.querySelector('#lightboxPct');
+    this.lightboxCount = this.lightbox.querySelector('#lightboxCount');
 
     this.zoomState = { scale: 1, x: 0, y: 0 };
 
@@ -425,6 +433,10 @@ class StationRegistry {
     this.lightbox.addEventListener('click', (e) => {
       if (e.target === this.lightbox) this.closeLightbox();
     });
+    this.lightboxStage.addEventListener('click', (e) => {
+      const navButton = e.target.closest('[data-image-nav]');
+      if (navButton) this.navigateLightbox(Number(navButton.dataset.imageNav));
+    });
 
     this.lightboxStage.addEventListener('wheel', (e) => {
       e.preventDefault();
@@ -457,17 +469,22 @@ class StationRegistry {
     });
 
     let pinchDist = null;
+    let swipeStartX = null;
     let panStartX = 0, panStartY = 0, panOriginX = 0, panOriginY = 0, singleTouchPan = false;
     this.lightboxStage.addEventListener('touchstart', (e) => {
       if (e.touches.length === 2) {
+        swipeStartX = null;
         pinchDist = Math.hypot(
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
         );
       } else if (e.touches.length === 1 && this.zoomState.scale > 1) {
+        swipeStartX = null;
         singleTouchPan = true;
         panStartX = e.touches[0].clientX; panStartY = e.touches[0].clientY;
         panOriginX = this.zoomState.x; panOriginY = this.zoomState.y;
+      } else if (e.touches.length === 1) {
+        swipeStartX = e.touches[0].clientX;
       }
     });
     this.lightboxStage.addEventListener('touchmove', (e) => {
@@ -490,13 +507,24 @@ class StationRegistry {
     }, { passive: false });
     this.lightboxStage.addEventListener('touchend', (e) => {
       if (e.touches.length < 2) pinchDist = null;
-      if (e.touches.length === 0) singleTouchPan = false;
+      if (e.touches.length === 0) {
+        singleTouchPan = false;
+        if (swipeStartX !== null && this.zoomState.scale === 1) {
+          const deltaX = e.changedTouches[0].clientX - swipeStartX;
+          if (Math.abs(deltaX) > 50) this.navigateLightbox(deltaX < 0 ? 1 : -1);
+        }
+        swipeStartX = null;
+      }
     });
 
     this.viewport.addEventListener('click', (e) => {
       const img = e.target.closest('.photo-slot img');
       if (!img || img.style.display === 'none') return;
-      this.openLightbox(img.src, img.alt);
+      const images = Array.from(img.closest('.photo-gallery').querySelectorAll('.photo-slot img'))
+        .filter(image => image.style.display !== 'none')
+        .map(image => ({ src: image.src, alt: image.alt }));
+      const imageIndex = images.findIndex(image => image.src === img.src);
+      this.openLightbox(images, imageIndex);
     });
 
     let touchStartX = 0;
@@ -507,12 +535,30 @@ class StationRegistry {
     });
   }
 
-  openLightbox(src, alt) {
-    this.lightboxImg.src = src;
-    this.lightboxImg.alt = alt;
+  openLightbox(images, index) {
+    this.lightboxImages = images;
+    this.lightboxImageIndex = index;
+    this.lightbox.querySelectorAll('.lightbox-nav').forEach(button => {
+      button.hidden = images.length < 2;
+    });
+    this.lightboxCount.hidden = images.length < 2;
+    this.showLightboxImage();
+    this.lightbox.classList.add('open');
+  }
+
+  showLightboxImage() {
+    const image = this.lightboxImages[this.lightboxImageIndex];
+    this.lightboxImg.src = image.src;
+    this.lightboxImg.alt = image.alt;
+    this.lightboxCount.textContent = `${this.lightboxImageIndex + 1} / ${this.lightboxImages.length}`;
     this.zoomState = { scale: 1, x: 0, y: 0 };
     this.applyZoom();
-    this.lightbox.classList.add('open');
+  }
+
+  navigateLightbox(direction) {
+    if (!this.lightboxImages || this.lightboxImages.length < 2) return;
+    this.lightboxImageIndex = (this.lightboxImageIndex + direction + this.lightboxImages.length) % this.lightboxImages.length;
+    this.showLightboxImage();
   }
 
   closeLightbox() {

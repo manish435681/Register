@@ -1,6 +1,10 @@
-Images pulled from Station_Document_and_records__1_.pptx and matched
-to their slides:
+Register app image assignments are explicit in each item's imageTag in
+app.js, so inserting a slide will not change existing image filenames.
+Bio Data Register uses 2a.jpg; Station Diary uses 11a.jpg. For a new
+entry with an image, set a unique imageTag (without the extension) on
+that item and add the matching .jpg file in this folder.
 
+Original source-deck image notes (the current app mapping may differ):
 2a  Station Diary            11a Possession Register
 3a  Night Drill Register     12a Private No. Book
 4a  Key Register             13a Checklist And Indemnity Bond

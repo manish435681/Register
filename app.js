@@ -42,32 +42,32 @@ class StationRegistry {
     const groups = [
       { cat: 'General & Administrative Registers', items: [
         { title: 'General & Administrative Registers', desc: 'Covers the day-to-day administrative logs used by station staff — from personnel records and attendance to asset tracking, incidents, and shift handovers.', isIndex: true },
-        { title: 'Bio Data Register', desc: 'Maintains personal and professional profiles, including emergency contact details, of all staff deployed at the station for administrative tracking.', },
+        { title: 'Bio Data Register', desc: 'Maintains personal and professional profiles, including emergency contact details, of all staff deployed at the station for administrative tracking.', imageTag: '2a' },
 
 
 
 
 
 
-        { title: 'Assurance Register', desc: 'Serves as a mandatory compliance log where staff sign to confirm they have read and understood the latest operational circulars and safety guidelines.',  },
-        { title: 'Attendance Register', desc: 'Tracks the daily physical presence, shift timings, and leave records of all station personnel to ensure proper manpower deployment.', noImage: true },
-        { title: 'Petty Repair Register', desc: 'Used to log minor infrastructure and civil complaints (such as broken tiles or plumbing issues) and track their resolution status by the maintenance department.' },
-        { title: 'Equipment Failure Register', desc: 'Records operational faults in critical station systems like AFC gates, lifts, and escalators, monitoring reporting times and repair durations.' },
-        { title: 'Station Access Register', desc: 'Ensures security by meticulously logging the entry, exit, and purpose of visit for all external contractors, maintenance teams, and non-station personnel.' , },
-        { title: 'Inventory / Fixed Asset Register', desc: "Maintains an updated, formal ledger of the station's physical assets and equipment, tracking receipts, transfers, and total available balances." },
-        { title: 'Incident / Accident Register', desc: 'Logs critical, unusual occurrences or emergencies at the station, capturing details like passenger rescues, medical aid provided, and police handovers.' },
-        { title: 'Lost and Found File', desc: 'Organizes the detailed records of articles misplaced by passengers, tracking their description, safekeeping, and eventual return to the rightful claimant.' },
-        { title: 'Station Diary', desc: 'Acts as the primary daily log for shift management, tracking staff deployment, cash balances, essential equipment status, and official shift handover remarks.' },
-        { title: 'Handing Over Memo', desc: 'A formal document used during shift changes to explicitly transfer the responsibility of specific station assets, keys, or ongoing operational issues to the incoming staff.',  },
-        { title: 'SM Instructions', desc: 'A dedicated log where the Station Manager records specific daily directives, operational focuses, or corrective actions for the station staff to follow.' , },
-        { title: 'Housekeeping Inspection Register', desc: 'Utilized by supervisors to log daily cleanliness checks across different station zones, ensuring the housekeeping contractor maintains strict hygiene standards.',  },
+        { title: 'Assurance Register', desc: 'Serves as a mandatory compliance log where staff sign to confirm they have read and understood the latest operational circulars and safety guidelines.', imageTag: '3a' },
+        { title: 'Attendance Register', desc: 'Tracks the daily physical presence, shift timings, and leave records of all station personnel to ensure proper manpower deployment.', noImage: true, imageTag: '4a' },
+        { title: 'Petty Repair Register', desc: 'Used to log minor infrastructure and civil complaints (such as broken tiles or plumbing issues) and track their resolution status by the maintenance department.', imageTag: '5a' },
+        { title: 'Equipment Failure Register', desc: 'Records operational faults in critical station systems like AFC gates, lifts, and escalators, monitoring reporting times and repair durations.', imageTag: '6a' },
+        { title: 'Station Access Register', desc: 'Ensures security by meticulously logging the entry, exit, and purpose of visit for all external contractors, maintenance teams, and non-station personnel.', imageTag: '7a' },
+        { title: 'Inventory / Fixed Asset Register', desc: "Maintains an updated, formal ledger of the station's physical assets and equipment, tracking receipts, transfers, and total available balances.", imageTag: '8a' },
+        { title: 'Incident / Accident Register', desc: 'Logs critical, unusual occurrences or emergencies at the station, capturing details like passenger rescues, medical aid provided, and police handovers.', imageTag: '9a' },
+        { title: 'Lost and Found File', desc: 'Organizes the detailed records of articles misplaced by passengers, tracking their description, safekeeping, and eventual return to the rightful claimant.', imageTag: '10a' },
+        { title: 'Station Diary', desc: 'Acts as the primary daily log for shift management, tracking staff deployment, cash balances, essential equipment status, and official shift handover remarks.', imageTag: '11a' },
+        { title: 'Handing Over Memo', desc: 'A formal document used during shift changes to explicitly transfer the responsibility of specific station assets, keys, or ongoing operational issues to the incoming staff.', imageTag: '12a' },
+        { title: 'SM Instructions', desc: 'A dedicated log where the Station Manager records specific daily directives, operational focuses, or corrective actions for the station staff to follow.', imageTag: '13a' },
+        { title: 'Housekeeping Inspection Register', desc: 'Utilized by supervisors to log daily cleanliness checks across different station zones, ensuring the housekeeping contractor maintains strict hygiene standards.', imageTag: '14a' },
 
-	{ title: 'Key Register', desc: 'Ensures station security by meticulously logging the issuance, purpose, and return of all facility keys by authorized personnel.' },
+	{ title: 'Key Register', desc: 'Ensures station security by meticulously logging the issuance, purpose, and return of all facility keys by authorized personnel.', imageTag: '15a' },
 
-{ title: 'Private Number Book', desc: 'Records unique private numbers exchanged between authorized staff to securely confirm safety instructions and block clearances.' },
+{ title: 'Private Number Book', desc: 'Records unique private numbers exchanged between authorized staff to securely confirm safety instructions and block clearances.', imageTag: '16a' },
 
 
-        { title: 'Grievance Register', desc: 'An internal log used to record and track the resolution of workplace complaints, administrative issues, or disputes raised by station staff.' , noImage: true },
+        { title: 'Grievance Register', desc: 'An internal log used to record and track the resolution of workplace complaints, administrative issues, or disputes raised by station staff.', noImage: true, imageTag: '17a' },
       ]},
 
 
@@ -86,33 +86,28 @@ class StationRegistry {
 
       { cat: 'Revenue Registers', items: [
         { title: 'Revenue Registers', desc: 'Captures all revenue-related documentation, including ticketing operations, cash reconciliation, refunds, penalties, and stock management.', isIndex: true },
-        { title: 'Gate Pass', desc: 'Authorizes the movement of specific revenue equipment, spare parts, or cash boxes in and out of the station premises securely.',  },
-        { title: 'CCC / TOM Operator Register', desc: 'Tracks the deployment, shift timings, and specific counter assignments of Customer Care Centre (CCC) and Ticket Office Machine (TOM) operators.',  },
+        { title: 'Gate Pass', desc: 'Authorizes the movement of specific revenue equipment, spare parts, or cash boxes in and out of the station premises securely.', imageTag: '19a' },
+        { title: 'CCC / TOM Operator Register', desc: 'Tracks the deployment, shift timings, and specific counter assignments of Customer Care Centre (CCC) and Ticket Office Machine (TOM) operators.', imageTag: '20a' },
 
 
    { 
   title: 'SAF (Shift Abstract Form)', 
-  desc: 'A detailed accounting document used to record specific system adjustments, manual fare corrections, and daily financial reconciliation at the station.'},
+  desc: 'A detailed accounting document used to record specific system adjustments, manual fare corrections, and daily financial reconciliation at the station.', imageTag: '21a'},
 
 
 
 
-        { title: 'Outstanding Format', desc: 'Logs any discrepancies, shortages, or pending revenue amounts identified during shift cash counting that need to be recovered or explained by operators.' , },
-        { title: 'Outstanding Summary Record', desc: 'Consolidates all individual outstanding formats into a master ledger to track long-term revenue discrepancies and their final clearance status.',  },
-        { title: 'Summary of Stock Register', desc: 'Monitors the inventory of vital revenue-related consumables, such as receipt paper rolls and manual tickets, ensuring uninterrupted ticketing operations.' },
-        { title: 'Miscellaneous Receipt Booklet', desc: 'Used to issue official receipts for non-standard financial transactions or specialized service fees collected at the station level.' , },
-        { title: 'Free Exit Surcharge Register', desc: 'Documents instances where passengers are authorized to exit the system without standard fare deduction, often logging specific surcharge conditions or exceptions.', noImage: true },
-        { title: 'Penalty Receipt Booklet', desc: 'Utilized to issue official receipts and record fines collected from passengers for rule violations like ticketless travel or unauthorized entry.' },
-        { title: 'Manual Refund Booklet', desc: 'Serves as a formal financial record for processing cash refunds to passengers during smart card errors, ticketing discrepancies, or system failures.' },
-        { title: 'Earning Register', desc: 'The primary daily accounting sheet consolidating all cash, POS, and QR earnings alongside stock balances and shift imprest data.' },
-        { title: 'SDM (Service Deficiency Memo)', desc: 'Documents specific instances of contractor staff lapses — such as late reporting or dress code violations — to enforce service level agreements.' },
-        { title: 'Manual Ticket', desc: 'Tracks the issuance of pre-printed emergency paper tickets used to maintain passenger flow during total Automated Fare Collection (AFC) system outages.' , },
-	{ title: 'Balance Sheet', desc: 'A daily financial statement used to precisely reconcile all shift ticketing and penalty revenues against the physical cash collected and deposited by the station.' },
-
-
-
-
-
+        { title: 'Outstanding Format', desc: 'Logs any discrepancies, shortages, or pending revenue amounts identified during shift cash counting that need to be recovered or explained by operators.', imageTag: '22a' },
+        { title: 'Outstanding Summary Record', desc: 'Consolidates all individual outstanding formats into a master ledger to track long-term revenue discrepancies and their final clearance status.', imageTag: '23a' },
+        { title: 'Summary of Stock Register', desc: 'Monitors the inventory of vital revenue-related consumables, such as receipt paper rolls and manual tickets, ensuring uninterrupted ticketing operations.', imageTag: '24a' },
+        { title: 'Miscellaneous Receipt Booklet', desc: 'Used to issue official receipts for non-standard financial transactions or specialized service fees collected at the station level.', imageTag: '25a' },
+        { title: 'Free Exit Surcharge Register', desc: 'Documents instances where passengers are authorized to exit the system without standard fare deduction, often logging specific surcharge conditions or exceptions.', noImage: true, imageTag: '26a' },
+        { title: 'Penalty Receipt Booklet', desc: 'Utilized to issue official receipts and record fines collected from passengers for rule violations like ticketless travel or unauthorized entry.', imageTag: '27a' },
+        { title: 'Manual Refund Booklet', desc: 'Serves as a formal financial record for processing cash refunds to passengers during smart card errors, ticketing discrepancies, or system failures.', imageTag: '28a' },
+        { title: 'Earning Register', desc: 'The primary daily accounting sheet consolidating all cash, POS, and QR earnings alongside stock balances and shift imprest data.', imageTag: '29a' },
+        { title: 'SDM (Service Deficiency Memo)', desc: 'Documents specific instances of contractor staff lapses — such as late reporting or dress code violations — to enforce service level agreements.', imageTag: '30a' },
+        { title: 'Manual Ticket', desc: 'Tracks the issuance of pre-printed emergency paper tickets used to maintain passenger flow during total Automated Fare Collection (AFC) system outages.', imageTag: '31a' },
+	{ title: 'Balance Sheet', desc: 'A daily financial statement used to precisely reconcile all shift ticketing and penalty revenues against the physical cash collected and deposited by the station.', imageTag: '32a' },
 
 
 
@@ -122,18 +117,23 @@ class StationRegistry {
 
 
 
-        { title: 'Complaint Book', desc: 'A public-facing ledger allowing passengers to formally record grievances, feedback, or suggestions regarding ticketing, facilities, and staff service.' }
+
+
+
+
+
+        { title: 'Complaint Book', desc: 'A public-facing ledger allowing passengers to formally record grievances, feedback, or suggestions regarding ticketing, facilities, and staff service.', imageTag: '33a' }
       ]},
       { cat: 'Safety Registers', items: [
         { title: 'Safety Registers', desc: 'Contains critical safety authorizations and logs required for safe track access, block working, and staff preparedness drills.', isIndex: true },
-        { title: 'PTW Issue', desc: 'A formal Permit to Work document issued to authorize maintenance teams to safely access hazardous or restricted track areas.' },
-        { title: 'PTW Cancel', desc: 'The complementary log ensuring that all personnel, tools, and materials are safely removed from the track before the Permit to Work is officially closed.' },
-        { title: 'Possession Register', desc: "Logs the granting and cancellation of formal Engineer's Possessions, which block designated track sections for heavy maintenance works." },
-        { title: 'Shadow Checklist', desc: 'A mandatory, step-by-step verification log used by the Station Controller to ensure all electrical safety protocols are met before granting a power block.' },
-        { title: 'Indemnity Bond', desc: 'A legal document signed by external contractors or visitors to protect the Metro Corporation from liability during hazardous on-site maintenance.' },
-        { title: 'Caution Order', desc: 'An official written directive issued to Train Operators, instructing them to proceed at restricted speeds due to temporary track hazards or maintenance.' },
-        { title: 'Authority to Proceed', desc: 'A critical safety authorization granted to Train Operators, allowing them to safely pass a defective or red signal under strict manual guidance.' },
-        { title: 'Night Drill Register', desc: 'Documents safety and operational mock drills conducted during non-revenue hours to ensure staff preparedness for emergencies.' }
+        { title: 'PTW Issue', desc: 'A formal Permit to Work document issued to authorize maintenance teams to safely access hazardous or restricted track areas.', imageTag: '35a' },
+        { title: 'PTW Cancel', desc: 'The complementary log ensuring that all personnel, tools, and materials are safely removed from the track before the Permit to Work is officially closed.', imageTag: '36a' },
+        { title: 'Possession Register', desc: "Logs the granting and cancellation of formal Engineer's Possessions, which block designated track sections for heavy maintenance works.", imageTag: '37a' },
+        { title: 'Shadow Checklist', desc: 'A mandatory, step-by-step verification log used by the Station Controller to ensure all electrical safety protocols are met before granting a power block.', imageTag: '38a' },
+        { title: 'Indemnity Bond', desc: 'A legal document signed by external contractors or visitors to protect the Metro Corporation from liability during hazardous on-site maintenance.', imageTag: '39a' },
+        { title: 'Caution Order', desc: 'An official written directive issued to Train Operators, instructing them to proceed at restricted speeds due to temporary track hazards or maintenance.', imageTag: '40a' },
+        { title: 'Authority to Proceed', desc: 'A critical safety authorization granted to Train Operators, allowing them to safely pass a defective or red signal under strict manual guidance.', imageTag: '41a' },
+        { title: 'Night Drill Register', desc: 'Documents safety and operational mock drills conducted during non-revenue hours to ensure staff preparedness for emergencies.', imageTag: '42a' }
       ]}
     ];
 
@@ -153,7 +153,7 @@ class StationRegistry {
           desc: item.desc,
           isIndex: !!item.isIndex,
           list: item.isIndex ? registerEntries : null,
-          imageTag: `${n}a`,
+          imageTag: item.imageTag || null,
           noImage: !!item.noImage
         });
       });
@@ -202,7 +202,7 @@ class StationRegistry {
     page.className = 'sheet' + (step.isIndex ? ' page-index' : '');
     const imgSrc = `assets/images/${step.imageTag}.${IMAGE_EXT}`;
 
-    const photoBlock = (step.isIndex || step.noImage) ? '' : `
+    const photoBlock = (step.isIndex || step.noImage || !step.imageTag) ? '' : `
         <div class="photo-slot">
           <div class="washi-tape"></div>
           <img src="${imgSrc}" alt="${step.title} reference image ${step.imageTag}"

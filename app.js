@@ -50,7 +50,7 @@ class StationRegistry {
 
 
         { title: 'Assurance Register', desc: 'Serves as a mandatory compliance log where staff sign to confirm they have read and understood the latest operational circulars and safety guidelines.',  },
-        { title: 'Attendance Register', desc: 'Tracks the daily physical presence, shift timings, and leave records of all station personnel to ensure proper manpower deployment.', no image: true },
+        { title: 'Attendance Register', desc: 'Tracks the daily physical presence, shift timings, and leave records of all station personnel to ensure proper manpower deployment.', noImage: true },
         { title: 'Petty Repair Register', desc: 'Used to log minor infrastructure and civil complaints (such as broken tiles or plumbing issues) and track their resolution status by the maintenance department.' },
         { title: 'Equipment Failure Register', desc: 'Records operational faults in critical station systems like AFC gates, lifts, and escalators, monitoring reporting times and repair durations.' },
         { title: 'Station Access Register', desc: 'Ensures security by meticulously logging the entry, exit, and purpose of visit for all external contractors, maintenance teams, and non-station personnel.' , },
@@ -67,7 +67,7 @@ class StationRegistry {
 { title: 'Private Number Book', desc: 'Records unique private numbers exchanged between authorized staff to securely confirm safety instructions and block clearances.' },
 
 
-        { title: 'Grievance Register', desc: 'An internal log used to record and track the resolution of workplace complaints, administrative issues, or disputes raised by station staff.' , no image: true },
+        { title: 'Grievance Register', desc: 'An internal log used to record and track the resolution of workplace complaints, administrative issues, or disputes raised by station staff.' , noImage: true },
       ]},
 
 
@@ -101,7 +101,7 @@ class StationRegistry {
         { title: 'Outstanding Summary Record', desc: 'Consolidates all individual outstanding formats into a master ledger to track long-term revenue discrepancies and their final clearance status.',  },
         { title: 'Summary of Stock Register', desc: 'Monitors the inventory of vital revenue-related consumables, such as receipt paper rolls and manual tickets, ensuring uninterrupted ticketing operations.' },
         { title: 'Miscellaneous Receipt Booklet', desc: 'Used to issue official receipts for non-standard financial transactions or specialized service fees collected at the station level.' , },
-        { title: 'Free Exit Surcharge Register', desc: 'Documents instances where passengers are authorized to exit the system without standard fare deduction, often logging specific surcharge conditions or exceptions.', no image: true },
+        { title: 'Free Exit Surcharge Register', desc: 'Documents instances where passengers are authorized to exit the system without standard fare deduction, often logging specific surcharge conditions or exceptions.', noImage: true },
         { title: 'Penalty Receipt Booklet', desc: 'Utilized to issue official receipts and record fines collected from passengers for rule violations like ticketless travel or unauthorized entry.' },
         { title: 'Manual Refund Booklet', desc: 'Serves as a formal financial record for processing cash refunds to passengers during smart card errors, ticketing discrepancies, or system failures.' },
         { title: 'Earning Register', desc: 'The primary daily accounting sheet consolidating all cash, POS, and QR earnings alongside stock balances and shift imprest data.' },

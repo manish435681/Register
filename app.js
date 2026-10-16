@@ -40,6 +40,68 @@ class StationRegistry {
     this.deckSub = 'SEC-142 · Documents & Records at Station';
 
     const groups = [
+      { cat: 'Introduction', items: [
+        {
+          title: 'Significance & Importance',
+          desc: 'Station registers are more than records of daily activity. They provide useful information that supports sound decisions, accountability, and the continued improvement of station operations.',
+          isIntro: true,
+          points: [
+            'For analysis of station activities, trends, and incidents.',
+            'For reliable information to support decisions and follow-up.',
+            'Can be used as evidence when reviewing events or actions.',
+            'Can be used to identify gaps and improve station operations.'
+          ]
+        },
+        {
+          title: 'File System',
+          desc: 'Station records are organized into separate folders in the Station Control Room. Use the file color to identify the type of information.',
+          isIntro: true,
+          isIndex: true,
+          points: [
+            '<span class="file-note"><strong class="file-tag file-tag-red">RED FILE</strong><span>Safety and operational procedures</span></span>',
+            '<span class="file-note"><strong class="file-tag file-tag-green">GREEN FILE</strong><span>Business rules and revenue management</span></span>',
+            '<span class="file-note"><strong class="file-tag file-tag-location">LOCATION</strong><span>Separate folders in the Station Control Room</span></span>'
+          ]
+        },
+        {
+          title: 'Red File Purpose & Contents',
+          desc: 'The Red File contains miscellaneous procedures related to Station Operation & Safety.',
+          isIntro: true,
+          points: [
+            'MRGR, 2020',
+            'SOP-Stations',
+            'Station Working Order (SWO)',
+            'Safety Circulars (SC)',
+            'Handbook for dealing with serious Incidents, Accident and Disasters',
+            'Accident and Disasters Management Manual',
+            'Role of Operation Staff during Contingencies',
+            'Station Management Instructions (SM-Instruction)',
+            'Safety Precautions and Essential Instruction for Working in AC Traction Area',
+            "Dos and Don'ts with regard to Safety from 25 KV Traction Voltage"
+          ]
+        },
+        {
+          title: 'Green File Purpose & Contents',
+          desc: 'The Green File contains miscellaneous documents such as business rules, revenue management and train operation procedures, and circulars.',
+          isIntro: true,
+          points: [
+            'Business Rule',
+            'Procedure of cash remittance into bank account',
+            'Revenue Instructions',
+            'Notices of Accidents and Enquiries there to Rules, 2002',
+            'O&M Act and its Amendments',
+            'Opening of Metro Railways for Public Carriage of Passengers Rules, 2014 and its amendment Rule-2019',
+            'SOP-Train Operation',
+            'Train Operators ATP operating manual',
+            "TOs handbook on Troubleshooting",
+            'Procedure order for monitoring and collecting video recording on CD/DVD',
+            'Signaling book',
+            'Metro Railways Prohibition of Carriage of large size luggage',
+            'JPO for upkeep and duty of staff in case of trapping of passenger',
+            'Red Alert Procedure'
+          ]
+        },
+      ]},
       { cat: 'General & Administrative Registers', items: [
         { title: 'General & Administrative Registers', desc: 'Covers the day-to-day administrative logs used by station staff — from personnel records and attendance to asset tracking, incidents, and shift handovers.', isIndex: true },
         { title: 'Bio Data Register', desc: 'Maintains personal and professional profiles, including emergency contact details, of all staff deployed at the station for administrative tracking.', imageTag: '2a' },
@@ -152,12 +214,15 @@ class StationRegistry {
           title: item.title,
           desc: item.desc,
           isIndex: !!item.isIndex,
+          isIntro: !!item.isIntro,
           list: item.isIndex ? registerEntries : null,
+          points: item.points || [],
           imageTags: item.imageTags || (item.imageTag ? [item.imageTag] : []),
           noImage: !!item.noImage
         });
       });
     });
+    this.registerPageCount = this.steps.filter(step => !step.isIntro).length;
   }
 
   // ------------------------------------------------------------------
@@ -189,7 +254,7 @@ class StationRegistry {
       <div class="cover-card">
         <div class="stamp-badge plain">NMRC</div>
         <h1>${this.deckTitle}</h1>
-        <p>${this.steps.length} entries · station documents, safety, revenue and lost &amp; found registers.</p>
+        <p>${this.registerPageCount} register and section pages · administrative, revenue, and safety records.</p>
         <button class="cover-cta" id="startBtn">Open register</button>
       </div>
     `;
@@ -199,7 +264,7 @@ class StationRegistry {
 
   buildSheet(step) {
     const page = document.createElement('div');
-    page.className = 'sheet' + (step.isIndex ? ' page-index' : '');
+    page.className = 'sheet' + (step.isIndex ? ' page-index' : '') + (step.isIntro ? ' page-intro' : '');
     const photoBlock = (step.isIndex || step.noImage || !step.imageTags.length) ? '' : `
         <div class="photo-gallery">
           ${step.imageTags.map(imageTag => `
@@ -220,10 +285,14 @@ class StationRegistry {
         <ol class="index-list">
           ${step.list.map(entry => `<li data-goto="${entry.code}" tabindex="0" role="button">${entry.title}</li>`).join('')}
         </ol>` : '';
+    const introPoints = step.isIntro ? `
+        <ul class="intro-points">
+          ${step.points.map(point => `<li>${point}</li>`).join('')}
+        </ul>` : '';
 
     page.innerHTML = `
       <div class="sheet-card">
-        <div class="stamp-badge${step.isIndex ? '' : ' plain'}">${step.isIndex ? 'SECTION' : 'ENTRY'}</div>
+        <div class="stamp-badge${step.isIndex ? '' : ' plain'}">${step.isIntro ? 'INTRO' : step.isIndex ? 'SECTION' : 'ENTRY'}</div>
         <div class="sheet-kicker">
           <span class="code">${step.code}/${this.steps.length}</span>
           <span>${step.cat}</span>
@@ -231,6 +300,7 @@ class StationRegistry {
         <div class="sheet-rule"></div>
         <h2 class="sheet-title">${step.title}</h2>
         <p class="sheet-desc">${step.desc}</p>
+        ${introPoints}
         ${indexList}
         ${photoBlock}
       </div>
